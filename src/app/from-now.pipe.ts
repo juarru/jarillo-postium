@@ -2,8 +2,6 @@ import * as moment from 'moment';
 import 'moment/locale/es';
 import {Pipe, PipeTransform} from '@angular/core';
 
-import { Post } from './post';
-
 /*=========================================================================|
 | Blue Path                                                                |
 |==========================================================================|
@@ -20,10 +18,8 @@ import { Post } from './post';
 })
 export class FromNowPipe implements PipeTransform {
 
-  transform(value: Post): string {
-
-      return moment(value.publicationDate).fromNow();
-
+  transform(value: any): string {
+    return moment(value).fromNow();
   }
 
 }
