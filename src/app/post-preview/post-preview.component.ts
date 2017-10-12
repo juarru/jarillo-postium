@@ -21,6 +21,12 @@ export class PostPreviewComponent {
   | además, un manejador para el mismo.                                      |
   |=========================================================================*/
 
+  @Output() authorSelected = new EventEmitter<Post>();
+
+  authorHasBeenSelected(post: Post): void {
+    this.authorSelected.emit(post);
+  };
+
   /*=========================================================================|
   | Green Path                                                               |
   |==========================================================================|
@@ -31,7 +37,7 @@ export class PostPreviewComponent {
   | además, un manejador para el mismo.                                      |
   |=========================================================================*/
 
-  @Output() postSelected = new EventEmitter<Post>()
+  @Output() postSelected = new EventEmitter<Post>();
 
   postHasBeenSelected(post: Post): void{
     this.postSelected.emit(post);

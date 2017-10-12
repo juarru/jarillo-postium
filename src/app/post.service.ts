@@ -32,7 +32,7 @@ export class PostService {
     | Una pista más, por si acaso: HttpParams.                                 |
     |=========================================================================*/
 
-    let date = Date.now()
+    let date = Date.now();
 
     const options = {
       params: new HttpParams().set('_sort', 'publicationDate').set('_order', 'DESC').set('publicationDate_lte', `${date}`)
@@ -63,7 +63,13 @@ export class PostService {
     | Una pista más, por si acaso: HttpParams.                                 |
     |=========================================================================*/
 
-     return this._http.get<Post[]>(`${environment.backendUri}/posts`);
+    let date = Date.now();
+
+    const options = {
+      params: new HttpParams().set('author.id', `${id}`).set('publicationDate_lte', `${date}`).set('_sort', 'publicationDate').set('_order', 'DESC')
+    };
+
+     return this._http.get<Post[]>(`${environment.backendUri}/posts`, options);
   }
 
   getCategoryPosts(id: number): Observable<Post[]> {

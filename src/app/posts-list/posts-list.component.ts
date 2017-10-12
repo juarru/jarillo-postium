@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
 })
 export class PostsListComponent {
 
-  postSelected: Post;
   constructor(private _router: Router) { }
 
   @Input() posts: Post[];
@@ -24,6 +23,10 @@ export class PostsListComponent {
   | Router de la app. La ruta a navegar es '/posts/users', pasando como      |
   | parámetro el identificador del autor.                                    |
   |=========================================================================*/
+
+  notifyAuthorSelected(post: Post): void {
+    this._router.navigate(['/posts/users', post.author.id]);
+  };
 
   /*=========================================================================|
   | Green Path                                                               |

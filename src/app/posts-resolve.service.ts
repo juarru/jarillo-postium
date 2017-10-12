@@ -22,6 +22,10 @@ export class PostsResolveService implements Resolve<Post[]> {
     | qué encuentras.                                                          |
     |=========================================================================*/
 
+    if(route.url[1] ? route.url[1].path === 'users' : false){
+      return this._postService.getUserPosts(route.params.userId);
+    }
+
     /*=========================================================================|
     | Yellow Path                                                              |
     |==========================================================================|

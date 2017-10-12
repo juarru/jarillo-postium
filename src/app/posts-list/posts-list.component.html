@@ -15,6 +15,7 @@
 
 <app-post-preview *ngFor="let post of posts"
                   [post]="post"
-                  (postSelected)="notifyPostSelected($event)">
+                  (postSelected)="notifyPostSelected($event)"
+                  (authorSelected)="notifyAuthorSelected($event)">
 
 </app-post-preview>
