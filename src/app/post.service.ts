@@ -32,11 +32,13 @@ export class PostService {
     | Una pista más, por si acaso: HttpParams.                                 |
     |=========================================================================*/
 
-    /*const options = {
-      params: new HttpParams().set()
-    };*/
+    let date = Date.now()
 
-    return this._http.get<Post[]>(`${environment.backendUri}/posts`);
+    const options = {
+      params: new HttpParams().set('_sort', 'publicationDate').set('_order', 'DESC').set('publicationDate_lte', `${date}`)
+    };
+
+    return this._http.get<Post[]>(`${environment.backendUri}/posts`, options);
   }
 
   getUserPosts(id: number): Observable<Post[]> {
